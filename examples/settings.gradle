@@ -1,0 +1,3 @@
+include ':lexactivator-release'
+include ':app'
+rootProject.name = "Sample"
