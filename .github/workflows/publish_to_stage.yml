@@ -35,4 +35,6 @@ jobs:
         OSSRH_USERNAME: ${{secrets.OSSRH_USERNAME}}
         OSSRH_PASSWORD: ${{secrets.OSSRH_PASSWORD}}
         SIGNING_FILE: '/secret.gpg'
-      run: ./gradlew publish -PlexVersion=${{github.event.inputs.Version}}
+      run: |
+          gradle wrapper
+          gradle publish -PlexVersion=${{github.event.inputs.Version}}
