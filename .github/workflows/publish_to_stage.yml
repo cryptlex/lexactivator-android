@@ -28,13 +28,14 @@ jobs:
       run: |
           sudo bash -c "echo '$gpg' | base64 -d > /secret.gpg"
           ls -a
-    - name: Build with Gradle
+          ls -a /
+    - name: Gradle Wrapper
+      run: gradle wrapper
+    - name: Gradle Build&Publish
       env:
         GPG_PASSPHARSE: ${{ secrets.GPG_PASSPHARSE }}
         GPG_PUBLIC_KEY: ${{ secrets.GPG_PUBLIC_KEY }}
         OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
         OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
-        SIGNING_FILE: '/secret.gpg'
-      run: |
-          gradle wrapper
-          gradle publish -PlexVersion=${{github.event.inputs.Version}}
+        SIGNING_FILE: /secret.gpg
+      run: gradle publish -PlexVersion=${{github.event.inputs.Version}} -Psigning.secretKeyRingFile=/secret.gpg -Psigning.password=${GPG_PASSPHRASE} -Psigning.keyId=${GPG_PUBLIC_KEY}
