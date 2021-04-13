@@ -27,14 +27,14 @@ jobs:
     - name: GPG Key create
       env:
         gpg: ${{secrets.GPG_PRIVATE_KEY_BASE_64}}
-      run: sudo bash -c "echo '$gpg' | base64 -d > '/secret.gpg'"
+      run: sudo bash -c "echo '$gpg' | base64 -d > /secret.gpg"
     - name: Build with Gradle
       env:
         GPG_PASSPHARSE: ${{secrets.GPG_PASSPHARSE}}
         GPG_PUBLIC_KEY: ${{secrets.GPG_PUBLIC_KEY}}
         OSSRH_USERNAME: ${{secrets.OSSRH_USERNAME}}
         OSSRH_PASSWORD: ${{secrets.OSSRH_PASSWORD}}
-        SIGNING_FILE: '/secret.gpg'
+        SIGNING_FILE: /secret.gpg
       run: |
           gradle wrapper
           gradle publish -PlexVersion=${{github.event.inputs.Version}}
