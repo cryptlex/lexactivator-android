@@ -1,0 +1,24 @@
+#!/bin/bash 
+set -e
+
+wget ${URL}${VERSION}/LexActivator-Linux.zip
+wget https://github.com/java-native-access/jna/raw/master/lib/native/android-armv7.jar
+wget https://github.com/java-native-access/jna/raw/master/lib/native/android-aarch64.jar
+
+unzip LexActivator-Linux.zip -d ~/android
+unzip android-aarch64.jar -d ~/jni64
+unzip android-armv7.jar -d ~/jni
+
+cp ~jni/libjnidispatch.so lexactivator/src/main/jniLibs/armeabi-v7a
+cp ~jni64/libjnidispatch.so lexactivator/src/main/jniLibs/arm64-v8a
+
+cp ~/android/libs/clang/arm64-v8a/libLexActivator.so lexactivator/src/main/jniLibs/arm64-v8a
+cp ~/android/libs/clang/armeabi-v7a/libLexActivator.so lexactivator/src/main/jniLibs/armeabi-v7a
+
+cp $ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/libc++_shared.so lexactivator/src/main/jniLibs/arm64-v8a
+cp $ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/libc++_shared.so lexactivator/src/main/jniLibs/armeabi-v7a
+
+rm -f LexActivator-Linux.zip
+rm -f android-armv7.jar
+rm -f android-aarch64.jar
+rm -r ~/jni ~/android ~/jni64
