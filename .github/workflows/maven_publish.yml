@@ -24,7 +24,6 @@ jobs:
             chmod +x pre-build.sh
             ./pre-build.sh
       env:
-        URL: "https://dl.cryptlex.com/downloads/"
         VERSION: "${{github.event.inputs.libraryVersion}}"
          
     - name: Set up JDK 8
