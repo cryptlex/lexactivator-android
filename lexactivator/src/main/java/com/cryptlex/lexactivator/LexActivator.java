@@ -2,7 +2,6 @@ package com.cryptlex.lexactivator;
 
 import com.sun.jna.Platform;
 import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
 import java.io.UnsupportedEncodingException;
 import com.sun.jna.ptr.IntByReference;
 import java.util.ArrayList;
@@ -69,6 +68,24 @@ public class LexActivator {
     public static void SetProductId(String productId, int flags) throws LexActivatorException {
         int status;
         status = LexActivatorNative.SetProductId(productId, flags);
+        if (LA_OK != status) {
+            throw new LexActivatorException(status);
+        }
+    }
+
+    /**
+     * In case you want to change the default directory used by LexActivator to
+     * store the activation data on Linux and macOS, this function can be used to
+     * set a custom directory.
+     * Please ensure that the directory exists and your app has read and write
+     * permissions in the directory.
+     *
+     * @param directoryPath absolute path of the directory.
+     * @throws LexActivatorException
+     */
+    public static void SetCustomDataDirectory(String directoryPath) throws LexActivatorException {
+        int status;
+        status = LexActivatorNative.SetCustomDataDirectory(directoryPath);
         if (LA_OK != status) {
             throw new LexActivatorException(status);
         }

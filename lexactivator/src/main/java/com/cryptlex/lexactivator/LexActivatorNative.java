@@ -3,7 +3,6 @@ package com.cryptlex.lexactivator;
 import com.sun.jna.Library;
 import com.sun.jna.NativeLibrary;
 import com.sun.jna.Native;
-import java.nio.CharBuffer;
 import java.nio.ByteBuffer;
 import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.Callback;
@@ -24,6 +23,8 @@ public class LexActivatorNative implements Library {
     public static native int SetProductData(String productData);
 
     public static native int SetProductId(String productId, int flags);
+
+    public static native int SetCustomDataDirectory(String directoryPath);
 
     public static native int SetCustomDeviceFingerprint(String fingerprint);
 
@@ -53,8 +54,6 @@ public class LexActivatorNative implements Library {
 
     public static native int GetLicenseKey(ByteBuffer licenseKey, int length);
 
-    public static native int GetLicenseKey(CharBuffer licenseKey, int length);
-
     public static native int GetLicenseExpiryDate(IntByReference expiryDate);
 
     public static native int GetLicenseAllowedActivations(IntByReference allowedActivations);
@@ -63,21 +62,13 @@ public class LexActivatorNative implements Library {
 
     public static native int GetLicenseUserEmail(ByteBuffer email, int length);
 
-    public static native int GetLicenseUserEmail(CharBuffer email, int length);
-
     public static native int GetLicenseUserName(ByteBuffer name, int length);
 
-    public static native int GetLicenseUserName(CharBuffer name, int length);
-
     public static native int GetLicenseUserCompany(ByteBuffer company, int length);
-
-    public static native int GetLicenseUserCompany(CharBuffer company, int length);
 
     public static native int GetLicenseUserMetadata(String key, ByteBuffer value, int length);
 
     public static native int GetLicenseType(ByteBuffer licenseType, int length);
-
-    public static native int GetLicenseType(CharBuffer licenseType, int length);
 
     public static native int GetActivationMetadata(String key, ByteBuffer value, int length);
 
@@ -91,13 +82,9 @@ public class LexActivatorNative implements Library {
 
     public static native int GetTrialId(ByteBuffer trialId, int length);
 
-    public static native int GetTrialId(CharBuffer trialId, int length);
-
     public static native int GetLocalTrialExpiryDate(IntByReference trialExpiryDate);
 
     public static native int GetLibraryVersion(ByteBuffer libraryVersion, int length);
-
-    public static native int GetLibraryVersion(CharBuffer libraryVersion, int length);
 
     public static native int CheckForReleaseUpdate(String platform, String version, String channel, CallbackType callback);
 
