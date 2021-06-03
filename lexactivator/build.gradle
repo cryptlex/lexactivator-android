@@ -1,0 +1,40 @@
+plugins {
+	id 'com.android.library'	
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        minSdkVersion 23
+        targetSdkVersion 30
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation 'net.java.dev.jna:jna:5.8.0'
+}
+
+if (project.hasProperty("lexVersion")) {
+        project.setVersion(lexVersion)
+        println "Version: " + version
+    }
+
+ext {
+    PUBLISH_GROUP_ID = 'com.cryptlex.lexactivator'
+    PUBLISH_ARTIFACT_ID = 'lexactivator-android'
+    PUBLISH_VERSION = version
+}
+
+apply from: "maven-central.gradle"
