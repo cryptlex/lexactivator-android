@@ -42,10 +42,9 @@ jobs:
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        automatic_release_tag: "${{ github.events.inputs.packageVersion }}"
         prerelease: false
+        automatic_release_tag: "${{github.event.inputs.packageVersion}}"
         files: lexactivator/build/outputs/aar/lexactivator-release.aar      
-      
 # 
 #    - name: Set up JDK 8
 #      uses: actions/setup-java@v2
