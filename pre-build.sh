@@ -1,7 +1,7 @@
 #!/bin/bash 
 set -e
 
-wget https://dl.cryptlex.com/downloads/${VERSION}/LexActivator-Android.zip
+wget https://dl.cryptlex.com/downloads/v${VERSION}/LexActivator-Android.zip
 wget https://github.com/java-native-access/jna/raw/master/lib/native/android-armv7.jar
 wget https://github.com/java-native-access/jna/raw/master/lib/native/android-aarch64.jar
 
