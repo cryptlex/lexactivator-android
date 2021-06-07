@@ -24,7 +24,7 @@ public class LexActivatorNative implements Library {
 
     public static native int SetProductId(String productId, int flags);
 
-    public static native int SetCustomDataDirectory(String directoryPath);
+    public static native int SetDataDirectory(String directoryPath);
 
     public static native int SetCustomDeviceFingerprint(String fingerprint);
 
