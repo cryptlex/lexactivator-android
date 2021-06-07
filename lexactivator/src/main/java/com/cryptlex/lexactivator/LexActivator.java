@@ -87,7 +87,7 @@ public class LexActivator {
      */
     public static void SetDataDirectory(String directoryPath) throws LexActivatorException {
         int status;
-        status = LexActivatorNative.SetCustomDataDirectory(directoryPath);
+        status = LexActivatorNative.SetDataDirectory(directoryPath);
         if (LA_OK != status) {
             throw new LexActivatorException(status);
         }
