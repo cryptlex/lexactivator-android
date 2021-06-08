@@ -57,11 +57,10 @@ jobs:
 #        gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
 #        gpg-passphrase: GPG_PASSPHRASE
                  
-#    - name: Publish with Gradle
-#      env:
-#        GPG_PASSPHARSE: ${{ secrets.GPG_PASSPHARSE }}
-#        GPG_PUBLIC_KEY: ${{ secrets.GPG_PUBLIC_KEY }}
-#        OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-#        OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
-#        SIGNING_FILE: ${{ secrets.GPG_PRIVATE_KEY }}
-#      run: gradle publish -PlexVersion=${{github.event.inputs.Version}}          
+    - name: Publish with Gradle
+      env:
+        ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.GPG_PASSPHRASE }}
+        ORG_GRADLE_PROJECT_signingKey: ${{ secrets.GPG_PRIVATE_KEY }}
+        OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+        OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+      run: gradle publish -PlexVersion=${{github.event.inputs.Version}}          
