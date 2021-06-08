@@ -38,7 +38,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - run: git pull origin master --ff-only
+    - run: git pull origin main --ff-only
 
     - name: Assemble Resources
       run: ./download-libs.sh
