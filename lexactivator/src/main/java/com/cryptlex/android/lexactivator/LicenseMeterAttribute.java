@@ -1,4 +1,4 @@
-package com.cryptlex.lexactivator;
+package com.cryptlex.android.lexactivator;
 
 public class LicenseMeterAttribute {
 

@@ -1,4 +1,4 @@
-package com.cryptlex.lexactivator;
+package com.cryptlex.android.lexactivator;
 
 import com.sun.jna.Library;
 import com.sun.jna.NativeLibrary;

@@ -1,5 +1,5 @@
 plugins {
-	id 'com.android.library'	
+	id 'com.android.library'
 }
 
 android {
@@ -28,13 +28,14 @@ dependencies {
 
 if (project.hasProperty("lexVersion")) {
         project.setVersion(lexVersion)
-        println "Version: " + version
-    }
+}
 
 ext {
-    PUBLISH_GROUP_ID = 'com.cryptlex.lexactivator'
-    PUBLISH_ARTIFACT_ID = 'lexactivator-android'
+    PUBLISH_GROUP_ID = 'com.cryptlex.android.lexactivator'
+    PUBLISH_ARTIFACT_ID = 'lexactivator'
     PUBLISH_VERSION = version
+    OSSRH_USERNAME = System.getenv('OSSRH_USERNAME')
+    OSSRH_PASSWORD = System.getenv('OSSRH_PASSWORD')
 }
 
 apply from: "maven-central.gradle"

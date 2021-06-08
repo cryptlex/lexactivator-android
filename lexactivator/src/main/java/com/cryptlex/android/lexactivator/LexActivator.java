@@ -1,4 +1,4 @@
-package com.cryptlex.lexactivator;
+package com.cryptlex.android.lexactivator;
 
 import com.sun.jna.Platform;
 import java.nio.ByteBuffer;
