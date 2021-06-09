@@ -33,5 +33,5 @@ dependencies {
     implementation group: 'net.java.dev.jna', name: 'jna', version: '5.8.0'
     implementation 'com.google.android.material:material:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation project(path: ':lexactivator-release')
+    implementation 'com.cryptlex.android.lexactivator:lexactivator:3.12.0'
 }

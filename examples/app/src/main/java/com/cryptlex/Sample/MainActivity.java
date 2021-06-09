@@ -1,6 +1,6 @@
 package com.cryptlex.sample;
-import com.cryptlex.lexactivator.LexActivator;
-import com.cryptlex.lexactivator.LexActivatorException;
+import com.cryptlex.android.lexactivator.LexActivator;
+import com.cryptlex.android.lexactivator.LexActivatorException;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         statusTextView = (TextView) findViewById(R.id.statusTextView);
         licenseKeyEditBox = (TextInputEditText) findViewById(R.id.licenseInput);
         try {
-            System.out.println(System.getProperty("java.specification.vendor").con);
             initLexActivator();
             int status = LexActivator.IsLicenseGenuine();
             if (LexActivator.LA_OK == status) {
