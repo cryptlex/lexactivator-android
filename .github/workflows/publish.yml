@@ -58,4 +58,4 @@ jobs:
         ORG_GRADLE_PROJECT_signingKey: ${{ secrets.GPG_PRIVATE_KEY }}
         OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
         OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
-      run: gradle publish -PlexVersion=${{github.event.inputs.packageVersion}} --info --warning-mode all          
+      run: gradle lexactivator:publishReleasePublicationToSonatypeRepository closeAndReleaseSonatypeStagingRepository -PlexVersion=${{github.event.inputs.packageVersion}} --info --warning-mode all      
