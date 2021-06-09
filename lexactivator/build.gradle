@@ -38,4 +38,16 @@ ext {
     OSSRH_PASSWORD = System.getenv('OSSRH_PASSWORD')
 }
 
+nexusPublishing {
+    repositories {
+		sonatype {
+			stagingProfileId = "24cc48a79ab9aa"
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+			username = OSSRH_USERNAME
+            password = OSSRH_PASSWORD
+        }
+    }
+}
+
 apply from: "maven-central.gradle"
