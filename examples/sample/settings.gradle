@@ -1,3 +1,2 @@
-include ':lexactivator-release'
 include ':app'
-rootProject.name = "examples"
+rootProject.name = "sample"
