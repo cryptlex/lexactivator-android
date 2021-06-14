@@ -94,6 +94,24 @@ public class LexActivator {
     }
 
     /**
+     * Android ID is needed to differentiate between two exactly same Android
+     * devices.
+     * This function must be called on every start of your Android app immediately after
+     * calling SetDataDirectory() function.
+     *
+     * @param androidId android id of the device.
+     * @throws LexActivatorException
+     */
+    public static void SetAndroidId(String androidId) throws LexActivatorException {
+        int status;
+        status = LexActivatorNative.SetAndroidId(androidId);
+        if (LA_OK != status) {
+            throw new LexActivatorException(status);
+        }
+    }
+
+
+    /**
      * In case you don't want to use the LexActivator's advanced
      * device fingerprinting algorithm, this function can be used to set a custom
      * device fingerprint.

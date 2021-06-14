@@ -28,6 +28,8 @@ public class LexActivatorNative implements Library {
 
     public static native int SetCustomDeviceFingerprint(String fingerprint);
 
+    public static native int SetAndroidId(String androidId);
+
     public static native int SetLicenseKey(String licenseKey);
 
     public static native int SetLicenseUserCredential(String email, String password);
