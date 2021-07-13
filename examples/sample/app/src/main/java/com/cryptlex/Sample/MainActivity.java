@@ -13,8 +13,6 @@ public class MainActivity extends AppCompatActivity {
     private TextInputEditText licenseKeyEditBox;
 
     private void initLexActivator() throws LexActivatorException {
-        LexActivator.SetDataDirectory(getApplicationContext().getFilesDir().getAbsolutePath());
-        LexActivator.SetAndroidId(Secure.getString(getApplicationContext().getContentResolver(), Secure.ANDROID_ID));
         LexActivator.SetProductData("PASTE_PRODUCT_DATA");
         LexActivator.SetProductId("PASTE_PRODUCT_ID", LexActivator.LA_USER);
     }
