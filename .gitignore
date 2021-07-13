@@ -21,9 +21,12 @@
 *.aar
 *.so
 
+gradlew*
 .gradle/
+gradle/
 .idea/
 build/
+local.properties
 examples/gradle/*
 lexactivator/build/*
 

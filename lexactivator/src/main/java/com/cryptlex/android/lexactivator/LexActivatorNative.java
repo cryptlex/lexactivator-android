@@ -3,6 +3,7 @@ package com.cryptlex.android.lexactivator;
 import com.sun.jna.Library;
 import com.sun.jna.NativeLibrary;
 import com.sun.jna.Native;
+import com.sun.jna.JNIEnv;
 import java.nio.ByteBuffer;
 import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.Callback;
@@ -18,6 +19,8 @@ public class LexActivatorNative implements Library {
         void invoke(int status);
     }
 
+    public static native int SetJniEnv(JNIEnv jniEnv);
+
     public static native int SetProductFile(String filePath);
 
     public static native int SetProductData(String productData);
@@ -27,8 +30,6 @@ public class LexActivatorNative implements Library {
     public static native int SetDataDirectory(String directoryPath);
 
     public static native int SetCustomDeviceFingerprint(String fingerprint);
-
-    public static native int SetAndroidId(String androidId);
 
     public static native int SetLicenseKey(String licenseKey);
 

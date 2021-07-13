@@ -1,5 +1,6 @@
 package com.cryptlex.android.lexactivator;
 
+import com.sun.jna.JNIEnv;
 import com.sun.jna.Platform;
 import java.nio.ByteBuffer;
 import java.io.UnsupportedEncodingException;
@@ -67,6 +68,7 @@ public class LexActivator {
      */
     public static void SetProductId(String productId, int flags) throws LexActivatorException {
         int status;
+        LexActivatorNative.SetJniEnv(JNIEnv.CURRENT);
         status = LexActivatorNative.SetProductId(productId, flags);
         if (LA_OK != status) {
             throw new LexActivatorException(status);
@@ -88,23 +90,6 @@ public class LexActivator {
     public static void SetDataDirectory(String directoryPath) throws LexActivatorException {
         int status;
         status = LexActivatorNative.SetDataDirectory(directoryPath);
-        if (LA_OK != status) {
-            throw new LexActivatorException(status);
-        }
-    }
-
-    /**
-     * Android ID is needed to differentiate between two exactly same Android
-     * devices.
-     * This function must be called on every start of your Android app immediately after
-     * calling SetDataDirectory() function.
-     *
-     * @param androidId android id of the device.
-     * @throws LexActivatorException
-     */
-    public static void SetAndroidId(String androidId) throws LexActivatorException {
-        int status;
-        status = LexActivatorNative.SetAndroidId(androidId);
         if (LA_OK != status) {
             throw new LexActivatorException(status);
         }
