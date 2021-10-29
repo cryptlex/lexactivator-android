@@ -19,6 +19,10 @@ public class LexActivator {
     public static final int LA_SYSTEM = 2;
     public static final int LA_IN_MEMORY = 4;
 
+    static{
+        LexActivatorNative.SetJniEnv(JNIEnv.CURRENT);
+    }
+
     /**
      * Sets the absolute path of the Product.dat file.
      * This function must be called on every start of your program before any other
@@ -68,7 +72,6 @@ public class LexActivator {
      */
     public static void SetProductId(String productId, int flags) throws LexActivatorException {
         int status;
-        LexActivatorNative.SetJniEnv(JNIEnv.CURRENT);
         status = LexActivatorNative.SetProductId(productId, flags);
         if (LA_OK != status) {
             throw new LexActivatorException(status);

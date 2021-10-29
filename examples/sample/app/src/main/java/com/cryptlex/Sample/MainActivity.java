@@ -1,4 +1,5 @@
 package com.cryptlex.sample;
+
 import com.cryptlex.android.lexactivator.LexActivator;
 import com.cryptlex.android.lexactivator.LexActivatorException;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,8 +14,8 @@ public class MainActivity extends AppCompatActivity {
     private TextInputEditText licenseKeyEditBox;
 
     private void initLexActivator() throws LexActivatorException {
-        LexActivator.SetProductData("PASTE_PRODUCT_DATA");
-        LexActivator.SetProductId("PASTE_PRODUCT_ID", LexActivator.LA_USER);
+        LexActivator.SetProductData("PASTE_PRODUCT_DATA_HERE");
+        LexActivator.SetProductId("PASTE_PRODUCT_ID_HERE", LexActivator.LA_USER);
     }
 
     public void activateLicense(View view) {

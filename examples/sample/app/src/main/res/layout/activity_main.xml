@@ -10,8 +10,11 @@
         android:layout_width="409dp"
         android:layout_height="229dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="409dp"
