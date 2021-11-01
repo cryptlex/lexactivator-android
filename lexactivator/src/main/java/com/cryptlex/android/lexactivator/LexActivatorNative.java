@@ -51,6 +51,12 @@ public class LexActivatorNative implements Library {
 
     public static native int GetProductMetadata(String key, ByteBuffer value, int length);
 
+    public static native int GetProductVersionName(ByteBuffer name, int length);
+    
+    public static native int GetProductVersionDisplayName(ByteBuffer name, int length);
+    
+    public static native int GetProductVersionFeatureFlag(String name, IntByReference enabled, ByteBuffer data, int length);
+
     public static native int GetLicenseMetadata(String key, ByteBuffer value, int length);
 
     public static native int GetLicenseMeterAttribute(String name, IntByReference allowedUses, IntByReference totalUses, IntByReference grossUses);
