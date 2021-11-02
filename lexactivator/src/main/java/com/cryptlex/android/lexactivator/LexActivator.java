@@ -312,6 +312,62 @@ public class LexActivator {
         throw new LexActivatorException(status);
     }
 
+        /**
+     * Gets the product version name.
+     * 
+     * @return name - Returns the name of the Product Version being used.
+     * @throws LexActivatorException
+     * @throws UnsupportedEncodingException
+     */
+    
+    public static String GetProductVersionName() throws LexActivatorException, UnsupportedEncodingException{
+        int status;
+            ByteBuffer buffer = ByteBuffer.allocate(256);
+            status = LexActivatorNative.GetProductVersionName(buffer, 256);
+            if (LA_OK == status) {
+                return new String(buffer.array(), "UTF-8").trim();
+            }
+        throw new LexActivatorException(status);
+    }
+
+    /**
+     * Gets the product version display name.
+     * 
+     * @return displayName - Returns the display name of the Product Version being used.
+     * @throws LexActivatorException
+     * @throws UnsupportedEncodingException
+     */
+
+    public static String GetProductVersionDisplayName() throws LexActivatorException, UnsupportedEncodingException{
+        int status;
+            ByteBuffer buffer = ByteBuffer.allocate(256);
+            status = LexActivatorNative.GetProductVersionDisplayName(buffer, 256);
+            if (LA_OK == status) {
+                return new String(buffer.array(), "UTF-8").trim();
+            }
+        throw new LexActivatorException(status);
+    }
+
+    /**
+     * Gets the product version feature flag.
+     * 
+     * @param name - The name of the Feature Flag.
+     * @return The properties of the Feature Flag as an object.
+     * @throws LexActivatorException
+     * @throws UnsupportedEncodingException
+     */
+
+    public static ProductVersionFeatureFlag GetProductVersionFeatureFlag(String name) throws LexActivatorException, UnsupportedEncodingException{
+        int status;
+        IntByReference enabled = new IntByReference(0);
+        ByteBuffer buffer = ByteBuffer.allocate(256);
+            status = LexActivatorNative.GetProductVersionFeatureFlag(name, enabled, buffer, 256);
+            if (LA_OK == status) {
+                return new FeatureFlag(name, enabled.getValue() > 0 , new String(buffer.array(), "UTF-8").trim() );
+            }
+        throw new LexActivatorException(status);
+    }
+
     /**
      * Gets the license metadata as set in the dashboard.
      *
