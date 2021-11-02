@@ -363,7 +363,7 @@ public class LexActivator {
         ByteBuffer buffer = ByteBuffer.allocate(256);
             status = LexActivatorNative.GetProductVersionFeatureFlag(name, enabled, buffer, 256);
             if (LA_OK == status) {
-                return new FeatureFlag(name, enabled.getValue() , new String(buffer.array(), "UTF-8").trim() );
+                return new FeatureFlag(name, enabled.getValue() > 0 , new String(buffer.array(), "UTF-8").trim() );
             }
         throw new LexActivatorException(status);
     }
