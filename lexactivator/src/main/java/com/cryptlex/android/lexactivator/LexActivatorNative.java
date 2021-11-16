@@ -43,6 +43,8 @@ public class LexActivatorNative implements Library {
 
     public static native int SetAppVersion(String appVersion);
 
+    public static native int SetActivationLeaseDuration(int leaseDuration);
+
     public static native int SetOfflineActivationRequestMeterAttributeUses(String name, int uses);
 
     public static native int SetNetworkProxy(String proxy);

@@ -240,6 +240,21 @@ public class LexActivator {
     }
 
     /**
+     * Sets the lease duration for the activation.
+     * 
+     * @param leaseDuration
+     * 
+     * @throws LexActivatorException
+     */
+    public static void SetActivationLeaseDuration(int leaseDuration) throws LexActivatorException {
+        int status;
+        status = LexActivatorNative.SetActivationLeaseDuration(leaseDuration);
+        if (LA_OK != status) {
+            throw new LexActivatorException(status);
+        }
+    }
+
+    /**
      * Sets the meter attribute uses for the offline activation request.
      * This function should only be called before GenerateOfflineActivationRequest()
      * function to set the meter attributes in case of offline activation.
