@@ -1,6 +1,6 @@
 #!/bin/bash 
 set -e
-VERSION="v3.17.2";
+VERSION="v3.18.0";
 curl -O -L https://dl.cryptlex.com/downloads/${VERSION}/LexActivator-Android.zip
 curl -O -L https://github.com/java-native-access/jna/raw/master/lib/native/android-armv7.jar
 curl -O -L https://github.com/java-native-access/jna/raw/master/lib/native/android-aarch64.jar
