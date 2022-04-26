@@ -78,7 +78,13 @@ public class LexActivator {
      */
     public static void SetProductId(String productId, int flags) throws LexActivatorException {
         int status;
-        LexActivatorNative.SetJniEnv(JNIEnv.CURRENT);
+        
+        try {
+            LexActivatorNative.SetJniEnv(JNIEnv.CURRENT);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
         status = LexActivatorNative.SetProductId(productId, flags);
         if (LA_OK != status) {
             throw new LexActivatorException(status);
