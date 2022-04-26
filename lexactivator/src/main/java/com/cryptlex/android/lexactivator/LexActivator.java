@@ -19,14 +19,15 @@ public class LexActivator {
     public static final int LA_SYSTEM = 2;
     public static final int LA_IN_MEMORY = 4;
 
-    static{
-        try{
-            LexActivatorNative.SetJniEnv(JNIEnv.CURRENT);
-        }
-        catch(Exception e){
-            System.out.println(e.toString());
-        }
-    }
+    // Exceptions are not caught.
+    // static{
+    //     try{
+    //         LexActivatorNative.SetJniEnv(JNIEnv.CURRENT);
+    //     }
+    //     catch(Exception e){
+    //         throw e;
+    //     }
+    // }
 
     /**
      * Sets the absolute path of the Product.dat file.
@@ -77,6 +78,7 @@ public class LexActivator {
      */
     public static void SetProductId(String productId, int flags) throws LexActivatorException {
         int status;
+        LexActivatorNative.SetJniEnv(JNIEnv.CURRENT);
         status = LexActivatorNative.SetProductId(productId, flags);
         if (LA_OK != status) {
             throw new LexActivatorException(status);
