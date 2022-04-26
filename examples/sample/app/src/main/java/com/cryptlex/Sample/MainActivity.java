@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.provider.Settings.Secure;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
             }
         } catch (LexActivatorException ex) {
             statusTextView.setText("License activation failed! Error code: " + ex.getCode() + " Error message: " + ex.getMessage());
+        } catch (Exception ex) {
+            statusTextView.setText("License activation failed! Error message: " + ex.getMessage());
         }
     }
 
@@ -56,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
             }
         } catch (LexActivatorException ex) {
             statusTextView.setText("Error code: " + ex.getCode() + " Error message: " + ex.getMessage());
+        } catch (Exception ex) {
+            statusTextView.setText("Error message: " + ex.getMessage());
         }
     }
 }
