@@ -20,7 +20,12 @@ public class LexActivator {
     public static final int LA_IN_MEMORY = 4;
 
     static{
-        LexActivatorNative.SetJniEnv(JNIEnv.CURRENT);
+        try{
+            LexActivatorNative.SetJniEnv(JNIEnv.CURRENT);
+        }
+        catch(Exception e){
+            System.out.println(e.toString());
+        }
     }
 
     /**
