@@ -21,5 +21,5 @@ rm -r android
 # rm -f android-aarch64.jar
 
 # LibC++ from NDK in bundle.
-# cp $ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/libc++_shared.so lexactivator/src/main/jniLibs/arm64-v8a
-# cp $ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/libc++_shared.so lexactivator/src/main/jniLibs/armeabi-v7a
+cp $ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/libc++_shared.so lexactivator/src/main/jniLibs/arm64-v8a
+cp $ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/libc++_shared.so lexactivator/src/main/jniLibs/armeabi-v7a
