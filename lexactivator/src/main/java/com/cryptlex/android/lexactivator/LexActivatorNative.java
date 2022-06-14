@@ -43,6 +43,8 @@ public class LexActivatorNative implements Library {
 
     public static native int SetAppVersion(String appVersion);
 
+    public static native int SetReleaseVersion(String releaseVersion);
+
     public static native int SetActivationLeaseDuration(int leaseDuration);
 
     public static native int SetOfflineActivationRequestMeterAttributeUses(String name, int uses);
@@ -67,6 +69,8 @@ public class LexActivatorNative implements Library {
 
     public static native int GetLicenseExpiryDate(IntByReference expiryDate);
 
+    public static native int GetLicenseMaintenanceExpiryDate(IntByReference maintenanceExpiryDate);
+
     public static native int GetLicenseAllowedActivations(IntByReference allowedActivations);
 
     public static native int GetLicenseTotalActivations(IntByReference totalActivations);
@@ -82,6 +86,8 @@ public class LexActivatorNative implements Library {
     public static native int GetLicenseType(ByteBuffer licenseType, int length);
 
     public static native int GetActivationMetadata(String key, ByteBuffer value, int length);
+
+    public static native int GetActivationMode(ByteBuffer initialMode, int length, ByteBuffer currentMode, int length);
 
     public static native int GetActivationMeterAttributeUses(String name, IntByReference uses);
 
