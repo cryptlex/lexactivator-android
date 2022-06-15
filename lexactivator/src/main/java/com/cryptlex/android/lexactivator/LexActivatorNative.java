@@ -87,7 +87,7 @@ public class LexActivatorNative implements Library {
 
     public static native int GetActivationMetadata(String key, ByteBuffer value, int length);
 
-    public static native int GetActivationMode(ByteBuffer initialMode, int length, ByteBuffer currentMode, int length);
+    public static native int GetActivationMode(ByteBuffer initialMode, int initialModeLength, ByteBuffer currentMode, int currentModeLength);
 
     public static native int GetActivationMeterAttributeUses(String name, IntByReference uses);
 
