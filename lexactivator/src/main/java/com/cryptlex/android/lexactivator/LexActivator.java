@@ -676,7 +676,7 @@ public class LexActivator {
      * @throws LexActivatorException
      * @throws UnsupportedEncodingException
      */
-    public static String GetActivationMode() throws LexActivatorException, UnsupportedEncodingException {
+    public static ActivationMode GetActivationMode() throws LexActivatorException, UnsupportedEncodingException {
         int status;
 
             ByteBuffer initialModeBuffer = ByteBuffer.allocate(256);
