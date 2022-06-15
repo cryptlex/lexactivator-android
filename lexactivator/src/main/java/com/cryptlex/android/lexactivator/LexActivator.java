@@ -246,7 +246,22 @@ public class LexActivator {
      */
     public static void SetAppVersion(String appVersion) throws LexActivatorException {
         int status;
-        status = LexActivatorNative.SetNetworkProxy(appVersion);
+        status = LexActivatorNative.SetAppVersion(appVersion);
+        if (LA_OK != status) {
+            throw new LexActivatorException(status);
+        }
+    }
+
+    /**
+     * Sets the current release version of your application.
+     * The release version appears along with the activation details in dashboard.
+     *
+     * @param releaseVersion string in following allowed formats: x.x, x.x.x, x.x.x.x
+     * @throws LexActivatorException
+     */
+    public static void SetReleaseVersion(String releaseVersion) throws LexActivatorException {
+        int status;
+        status = LexActivatorNative.SetReleaseVersion(releaseVersion);
         if (LA_OK != status) {
             throw new LexActivatorException(status);
         }
@@ -519,6 +534,26 @@ public class LexActivator {
     }
 
     /**
+     * Gets the license maintenance expiry date timestamp.
+     *
+     * @return Returns the timestamp
+     * @throws LexActivatorException
+     */
+    public static int GetLicenseMaintenanceExpiryDate() throws LexActivatorException {
+        int status;
+        IntByReference maintenanceExpiryDate = new IntByReference(0);
+        status = LexActivatorNative.GetLicenseMaintenanceExpiryDate(maintenanceExpiryDate);
+        switch (status) {
+        case LA_OK:
+            return maintenanceExpiryDate.getValue();
+        case LA_FAIL:
+            return 0;
+        default:
+            throw new LexActivatorException(status);
+        }
+    }
+
+    /**
      * Gets the email associated with license user.
      *
      * @return Returns the license user email.
@@ -629,6 +664,26 @@ public class LexActivator {
             status = LexActivatorNative.GetActivationMetadata(key, buffer, 256);
             if (LA_OK == status) {
                 return new String(buffer.array(), "UTF-8").trim();
+            }
+
+        throw new LexActivatorException(status);
+    }
+
+    /**
+     * Gets the initial and current mode of activation (online or offline).
+     *
+     * @return Returns the activation mode.
+     * @throws LexActivatorException
+     * @throws UnsupportedEncodingException
+     */
+    public static String GetActivationMode() throws LexActivatorException, UnsupportedEncodingException {
+        int status;
+
+            ByteBuffer initialModeBuffer = ByteBuffer.allocate(256);
+            ByteBuffer currentModeBuffer = ByteBuffer.allocate(256);
+            status = LexActivatorNative.GetActivationMode(initialModeBuffer, 256, currentModeBuffer, 256);
+            if (LA_OK == status) {
+                return new ActivationMode(new String(initialModeBuffer.array(), "UTF-8").trim(), new String(currentModeBuffer.array(), "UTF-8").trim());
             }
 
         throw new LexActivatorException(status);
