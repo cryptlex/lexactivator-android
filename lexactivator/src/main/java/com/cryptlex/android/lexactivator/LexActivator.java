@@ -268,6 +268,50 @@ public class LexActivator {
     }
 
     /**
+     * Sets the release published date of your application.
+     *
+     * @param releasePublishedDate unix timestamp of release published date.
+     * @throws LexActivatorException
+     */
+    public static void SetReleasePublishedDate(int releasePublishedDate) throws LexActivatorException {
+        int status;
+        status = LexActivatorNative.SetReleasePublishedDate(releasePublishedDate);
+        if (LA_OK != status) {
+            throw new LexActivatorException(status);
+        }
+    }
+
+    /**
+     * Sets the release platform e.g. windows, macos, linux. The release platform 
+     * appears along with the activation details in dashboard.
+     *
+     * @param releasePlatform release platform e.g. windows, macos, linux
+     * @throws LexActivatorException
+     */
+    public static void SetReleasePlatform(String releasePlatform) throws LexActivatorException {
+        int status;
+        status = LexActivatorNative.SetReleasePlatform(releasePlatform);
+        if (LA_OK != status) {
+            throw new LexActivatorException(status);
+        }
+    }
+
+    /**
+     * Sets the release channel e.g. stable, beta. The release channel 
+     * appears along with the activation details in dashboard.
+     *
+     * @param releaseChannel release channel e.g. stable
+     * @throws LexActivatorException
+     */
+    public static void SetReleaseChannel(String releaseChannel) throws LexActivatorException {
+        int status;
+        status = LexActivatorNative.SetReleaseChannel(releaseChannel);
+        if (LA_OK != status) {
+            throw new LexActivatorException(status);
+        }
+    }
+
+    /**
      * Sets the lease duration for the activation.
      * 
      * @param leaseDuration
@@ -551,6 +595,23 @@ public class LexActivator {
         default:
             throw new LexActivatorException(status);
         }
+    }
+
+    /**
+     * Gets the maximum allowed release version of the license.
+     *
+     * @return Returns the maximum allowed release version.
+     * @throws LexActivatorException
+     * @throws UnsupportedEncodingException
+     */
+    public static String GetLicenseMaxAllowedReleaseVersion() throws LexActivatorException, UnsupportedEncodingException {
+        int status;
+        ByteBuffer buffer = ByteBuffer.allocate(256);
+        status = LexActivatorNative.GetLicenseMaxAllowedReleaseVersion(buffer, 256);
+        if (LA_OK == status) {
+            return new String(buffer.array(), "UTF-8").trim();
+        }
+        throw new LexActivatorException(status);
     }
 
     /**
