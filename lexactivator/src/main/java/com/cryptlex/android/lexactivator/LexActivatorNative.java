@@ -19,6 +19,11 @@ public class LexActivatorNative implements Library {
         void invoke(int status);
     }
 
+    public interface ReleaseUpdateCallbackType extends Callback {
+        
+        void invoke(int status, ByteBuffer releaseJson);
+    }
+
     public static native int SetJniEnv(JNIEnv jniEnv);
 
     public static native int SetProductFile(String filePath);
@@ -112,6 +117,8 @@ public class LexActivatorNative implements Library {
     public static native int GetLibraryVersion(ByteBuffer libraryVersion, int length);
 
     public static native int CheckForReleaseUpdate(String platform, String version, String channel, CallbackType callback);
+
+    public static native int CheckReleaseUpdate(ReleaseUpdateCallbackType releaseUpdateCallback, int releaseFlags);
 
     public static native int ActivateLicense();
 
