@@ -169,7 +169,15 @@ public class LexActivatorException extends Exception {
 
         case LA_E_RELEASE_VERSION_NOT_ALLOWED:
             message = "The release version is not allowed.";
-            break;          
+            break;
+
+        case LA_E_RELEASE_PLATFORM_LENGTH:
+            message = "Release platform length is more than 256 characters.";
+            break;
+
+        case LA_E_RELEASE_CHANNEL_LENGTH:
+            message = "Release channel length is more than 256 characters.";
+            break;
 
         case LA_E_VM:
             message = "Application is being run inside a virtual machine / hypervisor, and activation has been disallowed in the VM.";
@@ -181,6 +189,18 @@ public class LexActivatorException extends Exception {
 
         case LA_E_IP:
             message = "IP address is not allowed.";
+            break;
+
+        case LA_E_RELEASE_VERSION:
+            message = "Invalid release version. Make sure the release version uses the following formats: x.x, x.x.x, x.x.x.x (where x is a number).";
+            break;
+
+        case LA_E_RELEASE_PLATFORM:
+            message = "Release platform not set.";
+            break;
+
+        case LA_E_RELEASE_CHANNEL:
+            message = "Release channel not set.";
             break;
 
         case LA_E_RATE_LIMIT:
@@ -513,6 +533,28 @@ public class LexActivatorException extends Exception {
      * MESSAGE: IP address is not allowed.
      */
     public static final int LA_E_IP = 82;
+
+    /*
+     * CODE: LA_E_RELEASE_VERSION
+     *
+     * MESSAGE: Invalid release version. Make sure the release version uses
+     * the following formats: x.x, x.x.x, x.x.x.x (where x is a number).
+     */
+    public static final int LA_E_RELEASE_VERSION = 84;
+
+    /*
+     * CODE: LA_E_RELEASE_PLATFORM
+     *
+     * MESSAGE: Release platform not set.
+     */
+    public static final int LA_E_RELEASE_PLATFORM = 85;
+
+    /*
+     * CODE: LA_E_RELEASE_CHANNEL
+     *
+     * MESSAGE: Release channel not set.
+     */
+    public static final int LA_E_RELEASE_CHANNEL = 86;
 
     /*
      * CODE: LA_E_RATE_LIMIT

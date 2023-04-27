@@ -24,6 +24,7 @@ android {
 
 dependencies {
     implementation 'net.java.dev.jna:jna:5.11.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
 }
 
 if (project.hasProperty("lexVersion")) {
