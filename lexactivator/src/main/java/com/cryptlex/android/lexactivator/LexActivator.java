@@ -692,6 +692,55 @@ public class LexActivator {
     }
 
     /**
+     * Gets the name associated with the license organization.
+     *
+     * @return Returns the license organization name.
+     * @throws LexActivatorException
+     * @throws UnsupportedEncodingException
+     */
+
+    public static String GetLicenseOrganizationName() throws LexActivatorException, UnsupportedEncodingException {
+        int status;
+        int bufferSize = 256;
+
+            ByteBuffer buffer = ByteBuffer.allocate(bufferSize);
+            status = LexActivatorNative.GetLicenseOrganizationName(buffer, bufferSize);
+            if (LA_OK == status) {
+                return new String(buffer.array(), "UTF-8").trim();
+            }
+        throw new LexActivatorException(status);
+    }
+
+    /**
+     * Gets the address associated with the license organization.
+     *
+     * @return Returns the license organization address.
+     * @throws LexActivatorException
+     * @throws UnsupportedEncodingException
+     */
+
+    public static OrganizationAddress GetLicenseOrganizationAddress() throws LexActivatorException, UnsupportedEncodingException {
+        int status;
+        int bufferSize = 1024;
+
+            ByteBuffer buffer = ByteBuffer.allocate(bufferSize);
+            status = LexActivatorNative.GetLicenseOrganizationAddressInternal(buffer, bufferSize);
+            if (LA_OK == status) {
+                String jsonAddress = new String(buffer.array(), "UTF-8").trim();
+                if (!jsonAddress.isEmpty()) {
+                    OrganizationAddress organizationAddress = null;
+                    ObjectMapper objectMapper = new ObjectMapper();
+                    try {
+                        organizationAddress = objectMapper.readValue(jsonAddress, OrganizationAddress.class);
+                    } catch (JsonProcessingException e) {}
+                    return organizationAddress;
+                } else {
+                    return null;
+                } 
+            }
+        throw new LexActivatorException(status);
+    }
+    /**
      * Gets the license type (node-locked or hosted-floating).
      *
      * @return Returns the license type.
