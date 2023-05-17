@@ -25,12 +25,12 @@ public class MainActivity extends AppCompatActivity {
 
         // Example of a call to a native method
         TextView tv = binding.sampleText;
-        tv.setText(stringFromJNI());
+        tv.setText(getActivationStatus());
     }
 
     /**
      * A native method that is implemented by the 'anative' native library,
      * which is packaged with this application.
      */
-    public native String stringFromJNI();
+    public native int getActivationStatus();
 }
