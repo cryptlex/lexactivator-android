@@ -1,0 +1,27 @@
+{
+  "buildFiles": [
+    "/Users/azan-n/Documents/Projects/lexactivator-android/examples/native/app/src/main/cpp/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/azan-n/Library/Android/sdk/cmake/3.18.1/bin/ninja",
+      "-C",
+      "/Users/azan-n/Documents/Projects/lexactivator-android/examples/native/app/.cxx/RelWithDebInfo/2p5575g6/arm64-v8a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/azan-n/Library/Android/sdk/cmake/3.18.1/bin/ninja",
+    "-C",
+    "/Users/azan-n/Documents/Projects/lexactivator-android/examples/native/app/.cxx/RelWithDebInfo/2p5575g6/arm64-v8a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "anative::@6890427a1f51a3e7e1df": {
+      "artifactName": "anative",
+      "abi": "arm64-v8a",
+      "output": "/Users/azan-n/Documents/Projects/lexactivator-android/examples/native/app/build/intermediates/cxx/RelWithDebInfo/2p5575g6/obj/arm64-v8a/libanative.so",
+      "runtimeFiles": []
+    }
+  }
+}

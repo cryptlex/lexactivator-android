@@ -1,0 +1,8 @@
+ninja: Entering directory `/Users/azan-n/AndroidStudioProjects/native/app/.cxx/Debug/2d5a2l48/x86_64'
+[1/2] Building CXX object CMakeFiles/anative.dir/native-lib.cpp.o
+[2/2] Linking CXX shared library /Users/azan-n/AndroidStudioProjects/native/app/build/intermediates/cxx/Debug/2d5a2l48/obj/x86_64/libanative.so
+FAILED: /Users/azan-n/AndroidStudioProjects/native/app/build/intermediates/cxx/Debug/2d5a2l48/obj/x86_64/libanative.so 
+: && /Users/azan-n/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=x86_64-none-linux-android30 --gcc-toolchain=/Users/azan-n/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/azan-n/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -fPIC -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O0 -fno-limit-debug-info  -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libgcc_real.a -Wl,--exclude-libs,libatomic.a -static-libstdc++ -Wl,--build-id -Wl,--fatal-warnings -Wl,--no-undefined -Qunused-arguments -shared -Wl,-soname,libanative.so -o /Users/azan-n/AndroidStudioProjects/native/app/build/intermediates/cxx/Debug/2d5a2l48/obj/x86_64/libanative.so CMakeFiles/anative.dir/native-lib.cpp.o  -llog  -latomic -lm && :
+/Users/azan-n/AndroidStudioProjects/native/app/src/main/cpp/native-lib.cpp:11: error: undefined reference to 'SetJniEnv'
+clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+ninja: build stopped: subcommand failed.

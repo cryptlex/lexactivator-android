@@ -1,0 +1,7 @@
+Executable : /Users/azan-n/Library/Android/sdk/cmake/3.18.1/bin/ninja
+arguments : 
+-C
+/Users/azan-n/AndroidStudioProjects/native/app/.cxx/Debug/2d5a2l48/armeabi-v7a
+anative
+jvmArgs : 
+

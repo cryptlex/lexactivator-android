@@ -1,0 +1,3 @@
+/Users/azan-n/Documents/Projects/lexactivator-android/examples/native/app/.cxx/Debug/5q471sy5/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+/Users/azan-n/Documents/Projects/lexactivator-android/examples/native/app/.cxx/Debug/5q471sy5/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/azan-n/Documents/Projects/lexactivator-android/examples/native/app/.cxx/Debug/5q471sy5/armeabi-v7a/CMakeFiles/anative.dir
