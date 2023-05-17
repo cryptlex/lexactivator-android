@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/Users/azan-n/Documents/Projects/lexactivator-android/examples/native/app/.cxx/RelWithDebInfo/2p5575g6/armeabi-v7a",
-  "command": "/Users/azan-n/Library/Android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=armv7-none-linux-androideabi33 --sysroot=/Users/azan-n/Library/Android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Danative_EXPORTS -I/Users/azan-n/Documents/Projects/lexactivator-android/examples/native/app/src/main/cpp/lexactivator/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security  -std=c++17 -O2 -g -DNDEBUG -fPIC -o CMakeFiles/anative.dir/native-lib.cpp.o -c /Users/azan-n/Documents/Projects/lexactivator-android/examples/native/app/src/main/cpp/native-lib.cpp",
-  "file": "/Users/azan-n/Documents/Projects/lexactivator-android/examples/native/app/src/main/cpp/native-lib.cpp"
-}
-]

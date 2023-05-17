@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/Users/azan-n/AndroidStudioProjects/native/app/.cxx/Debug/2d5a2l48/arm64-v8a",
-  "command": "/Users/azan-n/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=aarch64-none-linux-android30 --gcc-toolchain=/Users/azan-n/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/azan-n/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Danative_EXPORTS -I/Users/azan-n/AndroidStudioProjects/native/app/src/main/cpp/lexactivator/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O0 -fno-limit-debug-info  -fPIC -o CMakeFiles/anative.dir/native-lib.cpp.o -c /Users/azan-n/AndroidStudioProjects/native/app/src/main/cpp/native-lib.cpp",
-  "file": "/Users/azan-n/AndroidStudioProjects/native/app/src/main/cpp/native-lib.cpp"
-}
-]

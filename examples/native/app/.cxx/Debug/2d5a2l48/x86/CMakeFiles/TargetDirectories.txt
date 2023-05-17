@@ -1,3 +1,0 @@
-/Users/azan-n/AndroidStudioProjects/native/app/.cxx/Debug/2d5a2l48/x86/CMakeFiles/rebuild_cache.dir
-/Users/azan-n/AndroidStudioProjects/native/app/.cxx/Debug/2d5a2l48/x86/CMakeFiles/edit_cache.dir
-/Users/azan-n/AndroidStudioProjects/native/app/.cxx/Debug/2d5a2l48/x86/CMakeFiles/anative.dir
