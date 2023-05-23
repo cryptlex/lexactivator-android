@@ -2,12 +2,14 @@ package com.cryptlex.android.lexactivator;
 
 import com.sun.jna.JNIEnv;
 import com.sun.jna.Platform;
+import com.sun.jna.Pointer;
 import java.nio.ByteBuffer;
 import java.io.UnsupportedEncodingException;
 import com.sun.jna.ptr.IntByReference;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 public class LexActivator {
@@ -1005,6 +1007,7 @@ public class LexActivator {
      * @param userData     data that will be passed to the callback function.This parameter 
 	 *                     has to be null if no user data needs to be passed to the callback.
      * @throws LexActivatorException
+     * @throws UnsupportedEncodingException
      */
     public static void CheckReleaseUpdate(ReleaseUpdateCallbackEvent listener, int releaseFlags, final Object userData) throws LexActivatorException, UnsupportedEncodingException {
         if (releaseUpdateCallbackEventListeners == null) {
@@ -1013,16 +1016,13 @@ public class LexActivator {
         }
         if (privateReleaseUpdateCallback == null) {
             privateReleaseUpdateCallback = new LexActivatorNative.ReleaseUpdateCallbackType() {
-                public void invoke(int status, ByteBuffer releaseJson, Object unused) {
-                    String releaseJsonStr = "";
-                    try{
-                        releaseJsonStr = new String(releaseJson.array(), "UTF-8").trim();
-                    } catch (UnsupportedEncodingException e) {}
+                public void invoke(int status, String releaseJson, Pointer unused) {
                     Release release = null;
-                    if (!releaseJsonStr.isEmpty()) {
+                    if (!releaseJson.isEmpty()) {
                         ObjectMapper mapper = new ObjectMapper();
+                        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
                         try {
-                            release = mapper.readValue(releaseJsonStr, Release.class);
+                            release = mapper.readValue(releaseJson, Release.class);
                         } catch (JsonProcessingException e) {}
                     }
                     // Notify everybody that may be interested.
@@ -1032,7 +1032,7 @@ public class LexActivator {
                 }
             };
             int status;
-            status = LexActivatorNative.CheckReleaseUpdateInternal(privateReleaseUpdateCallback, releaseFlags, null);
+            status = LexActivatorNative.CheckReleaseUpdateInternal(privateReleaseUpdateCallback, releaseFlags, Pointer.NULL);
             if (LA_OK != status) {
                 throw new LexActivatorException(status);
             }
