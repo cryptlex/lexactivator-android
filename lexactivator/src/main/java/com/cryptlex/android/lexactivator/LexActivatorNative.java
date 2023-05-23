@@ -3,6 +3,7 @@ package com.cryptlex.android.lexactivator;
 import com.sun.jna.Library;
 import com.sun.jna.NativeLibrary;
 import com.sun.jna.Native;
+import com.sun.jna.Pointer;
 import com.sun.jna.JNIEnv;
 import java.nio.ByteBuffer;
 import com.sun.jna.ptr.IntByReference;
@@ -21,7 +22,7 @@ public class LexActivatorNative implements Library {
 
     public interface ReleaseUpdateCallbackType extends Callback {
         
-        void invoke(int status, ByteBuffer releaseJson, Object unused);
+        void invoke(int status, String releaseJson, Pointer unused);
     }
 
     public static native int SetJniEnv(JNIEnv jniEnv);
@@ -122,7 +123,7 @@ public class LexActivatorNative implements Library {
 
     public static native int CheckForReleaseUpdate(String platform, String version, String channel, CallbackType callback);
 
-    public static native int CheckReleaseUpdateInternal(ReleaseUpdateCallbackType releaseUpdateCallback, int releaseFlags, Object userData);
+    public static native int CheckReleaseUpdateInternal(ReleaseUpdateCallbackType releaseUpdateCallback, int releaseFlags, Pointer userData);
 
     public static native int ActivateLicense();
 
