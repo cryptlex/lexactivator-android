@@ -12,6 +12,7 @@ import com.sun.jna.Callback;
 public class LexActivatorNative implements Library {
 
     static{
+        System.setProperty("jna.nosys", "true");
         Native.register(LexActivatorNative.class,NativeLibrary.getInstance("LexActivator"));
     }
     
