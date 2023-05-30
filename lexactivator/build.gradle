@@ -1,5 +1,7 @@
 plugins {
 	id 'com.android.library'
+    id 'maven-publish'
+    id 'signing'
 }
 
 android {
@@ -21,11 +23,18 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
+
     namespace 'com.cryptlex.android.lexactivator'
 }
 
 dependencies {
-    implementation 'net.java.dev.jna:jna:5.11.0'
+    implementation 'net.java.dev.jna:jna:5.13.0@aar'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
 }
 
@@ -53,4 +62,59 @@ nexusPublishing {
     }
 }
 
-apply from: "maven-central.gradle"
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId PUBLISH_GROUP_ID
+            artifactId PUBLISH_ARTIFACT_ID
+            version PUBLISH_VERSION
+            afterEvaluate {
+                from components.release
+                pom {
+                    name = 'LexActivator'
+                    description = 'LexActivator wrapper for Android (licensing library).'
+                    url = 'https://github.com/cryptlex/lexactivator-android'
+                    licenses {
+                        license {
+                            name = 'MIT License'
+                            url = 'http://www.opensource.org/licenses/mit-license.php'
+                        }
+                    }
+                    organization {
+                        name = 'Cryptlex, LLC'
+                        url = 'https://cryptlex.com'
+                    }
+                    developers {
+                        developer {
+                            name = 'Cryptlex Team'
+                            email = 'support@cryptlex.com'
+                            organization = 'Cryptlex, LLC.'
+                            organizationUrl = 'https://cryptlex.com'
+                        }
+                    }
+                    scm {
+                        connection = 'scm:git:https://github.com/cryptlex/lexactivator-android.git'
+                        developerConnection = 'scm:git:ssh://github.com/cryptlex/lexactivator-android.git'
+                        url = 'https://github.com/cryptlex/lexactivator-android'
+                    }
+                }
+            }
+        }
+
+        test(MavenPublication) {
+            groupId PUBLISH_GROUP_ID
+            artifactId PUBLISH_ARTIFACT_ID
+            version PUBLISH_VERSION
+            afterEvaluate {
+                from components.release
+            }
+        }
+    }
+}
+
+signing {
+    def signingKey = findProperty("signingKey")
+    def signingPassword = findProperty("signingPassword")
+    useInMemoryPgpKeys(signingKey, signingPassword)
+    sign publishing.publications.release
+}
