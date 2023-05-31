@@ -38,30 +38,6 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
 }
 
-if (project.hasProperty("lexVersion")) {
-        project.setVersion(lexVersion)
-}
-
-ext {
-    PUBLISH_GROUP_ID = 'com.cryptlex.android.lexactivator'
-    PUBLISH_ARTIFACT_ID = 'lexactivator'
-    PUBLISH_VERSION = version
-    OSSRH_USERNAME = System.getenv('OSSRH_USERNAME')
-    OSSRH_PASSWORD = System.getenv('OSSRH_PASSWORD')
-}
-
-nexusPublishing {
-    repositories {
-		sonatype {
-			stagingProfileId = "24cc48a79ab9aa"
-            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
-            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
-			username = OSSRH_USERNAME
-            password = OSSRH_PASSWORD
-        }
-    }
-}
-
 publishing {
     publications {
         release(MavenPublication) {
