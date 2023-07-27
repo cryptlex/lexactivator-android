@@ -89,7 +89,6 @@ public class LexActivator {
      */
     public static void SetProductId(String productId, int flags) throws LexActivatorException {
         int status;
-
         try {
             LexActivatorNative.SetJniEnv(JNIEnv.CURRENT);
         } catch (Exception e) {
