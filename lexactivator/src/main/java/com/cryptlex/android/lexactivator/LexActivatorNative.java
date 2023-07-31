@@ -106,6 +106,8 @@ public class LexActivatorNative implements Library {
 
     public static native int GetLicenseOrganizationAddressInternal(ByteBuffer address, int length);
 
+    public static native int GetUserLicensesInternal(ByteBuffer userLicenses, int length);
+
     public static native int GetLicenseType(ByteBuffer licenseType, int length);
 
     public static native int GetActivationMetadata(String key, ByteBuffer value, int length);
@@ -130,6 +132,8 @@ public class LexActivatorNative implements Library {
 
     public static native int CheckReleaseUpdateInternal(ReleaseUpdateCallbackType releaseUpdateCallback, int releaseFlags, Pointer userData);
 
+    public static native int AuthenticateUser(String email, String password);
+    
     public static native int ActivateLicense();
 
     public static native int ActivateLicenseOffline(String filePath);
