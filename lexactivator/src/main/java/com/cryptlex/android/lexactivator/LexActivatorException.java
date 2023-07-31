@@ -204,7 +204,7 @@ public class LexActivatorException extends Exception {
             break;
 
         case LA_E_USER_NOT_AUTHENTICATED:
-            message = "Permission denied.";
+            message = "The user is not authenticated.";
             break;
 
         case LA_E_RATE_LIMIT:
@@ -563,7 +563,7 @@ public class LexActivatorException extends Exception {
     /*
      * CODE: LA_E_USER_NOT_AUTHENTICATED
      * 
-     * MESSAGE: Permission denied. 
+     * MESSAGE: The user is not authenticated. 
      */
     public static final int LA_E_USER_NOT_AUTHENTICATED = 87;
 
