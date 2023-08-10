@@ -66,6 +66,8 @@ public class LexActivatorNative implements Library {
 
     public static native int SetCryptlexHost(String host);
 
+    public static native int SetTwoFactorAuthenticationCode(String twoFactorAuthenticationCode);
+
     public static native int GetProductMetadata(String key, ByteBuffer value, int length);
 
     public static native int GetProductVersionName(ByteBuffer name, int length);
