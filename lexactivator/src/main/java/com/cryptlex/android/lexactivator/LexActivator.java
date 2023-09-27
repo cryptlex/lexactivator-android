@@ -1141,6 +1141,23 @@ public class LexActivator {
     }
 
     /**
+     * Authenticates the user via OIDC Id token.
+     * @param idToken The id token obtained from the OIDC provider.
+     * @return LA_OK
+     * @throws LexActivatorException
+     */
+
+    public static int AuthenticateUserWithIdToken(String idToken) throws LexActivatorException {
+        int status;
+        status = LexActivatorNative.AuthenticateUserWithIdToken(idToken);
+        if (LA_OK == status) {
+            return LA_OK;
+        } else {
+            throw new LexActivatorException(status);
+        }
+    }
+
+    /**
      * Activates the license by contacting the Cryptlex servers. It validates the
      * key and returns with encrypted and digitally signed token which it stores and
      * uses to activate your application.
