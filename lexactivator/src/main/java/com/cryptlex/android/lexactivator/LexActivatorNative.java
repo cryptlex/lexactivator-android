@@ -114,6 +114,8 @@ public class LexActivatorNative implements Library {
 
     public static native int GetLicenseType(ByteBuffer licenseType, int length);
 
+    public static native int GetActivationId(ByteBuffer activationId, int length);
+
     public static native int GetActivationMetadata(String key, ByteBuffer value, int length);
 
     public static native int GetActivationMode(ByteBuffer initialMode, int initialModeLength, ByteBuffer currentMode, int currentModeLength);
