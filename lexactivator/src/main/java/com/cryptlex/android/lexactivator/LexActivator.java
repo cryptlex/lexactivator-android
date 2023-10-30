@@ -872,7 +872,7 @@ public class LexActivator {
     /**
      * Gets the activation id.
      * 
-     * @return Retuns the activation id.
+     * @return Returns the activation id.
      * @throws LexActivatorException
      * @throws UnsupportedEncodingException
      */
