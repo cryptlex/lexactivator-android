@@ -98,6 +98,10 @@ public class LexActivatorNative implements Library {
 
     public static native int GetLicenseTotalActivations(IntByReference totalActivations);
 
+    public static native int GetLicenseAllowedDeactivations(IntByReference allowedDeactivations);
+
+    public static native int GetLicenseTotalDeactivations(IntByReference totalDeactivations);
+
     public static native int GetLicenseUserEmail(ByteBuffer email, int length);
 
     public static native int GetLicenseUserName(ByteBuffer name, int length);
