@@ -191,6 +191,10 @@ public class LexActivatorException extends Exception {
             message = "IP address is not allowed.";
             break;
 
+        case LA_E_CONTAINER:
+            message = "Application is being run inside a container and activation has been disallowed in the container.";
+            break;
+
         case LA_E_RELEASE_VERSION:
             message = "Invalid release version. Make sure the release version uses the following formats: x.x, x.x.x, x.x.x.x (where x is a number).";
             break;
@@ -241,6 +245,18 @@ public class LexActivatorException extends Exception {
         
         case LA_E_USERS_LIMIT_REACHED:
             message = "The allowed users for this account has reached its limit.";
+            break;
+
+        case LA_E_OS_USER:
+            message = "OS user has changed since activation and the license is user-locked.";
+            break;
+
+        case LA_E_INVALID_PERMISSION_FLAG:
+            message = "Invalid permission flag.";
+            break;
+
+        case LA_E_FREE_PLAN_ACTIVATION_LIMIT_REACHED:
+            message = "The free plan has reached it's activation limit.";
             break;
 
         default:
@@ -563,6 +579,14 @@ public class LexActivatorException extends Exception {
     public static final int LA_E_IP = 82;
 
     /*
+     * CODE: LA_E_CONTAINER
+     *
+     * MESSAGE: Application is being run inside a container and activation has been
+     * disallowed in the container.
+     */
+    public static final int LA_E_CONTAINER = 83;
+
+    /*
      * CODE: LA_E_RELEASE_VERSION
      *
      * MESSAGE: Invalid release version. Make sure the release version uses
@@ -653,5 +677,26 @@ public class LexActivatorException extends Exception {
      * MESSAGE: The allowed users for this account has reached its limit.
      */
     public static final int LA_E_USERS_LIMIT_REACHED = 103;
+
+    /*
+     * CODE: LA_E_OS_USER
+     *
+     * MESSAGE: OS user has changed since activation and the license is user-locked.
+     */
+    public static final int LA_E_OS_USER = 104;
+
+    /*
+     * CODE: LA_E_INVALID_PERMISSION_FLAG
+     *
+     * MESSAGE: Invalid permission flag.
+     */
+    public static final int LA_E_INVALID_PERMISSION_FLAG = 105;
+    
+    /*
+     * CODE: LA_E_FREE_PLAN_ACTIVATION_LIMIT_REACHED 
+     *
+     * MESSAGE: The free plan has reached its activation limit.
+     */
+    public static final int LA_E_FREE_PLAN_ACTIVATION_LIMIT_REACHED  = 106;
 
 }
