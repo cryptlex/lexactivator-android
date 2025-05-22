@@ -51,6 +51,8 @@ public class LexActivator {
      * Sets the absolute path of the Product.dat file.
      * This function must be called on every start of your program before any other
      * functions are called.
+     * 
+     * @deprecated This function is deprecated. Use SetProductData() instead.
      *
      * @param filePath absolute path of the product file (Product.dat)
      * @throws LexActivatorException
@@ -205,6 +207,8 @@ public class LexActivator {
      * Sets the license user email and password for authentication.
      * This function must be called before ActivateLicense() or IsLicenseGenuine()
      * function if <b>requireAuthentication</b> property of the license is set to true.
+     * 
+     * @deprecated This function is deprecated. Use AuthenticateUser() instead.
      *
      * @param email user email address.
      * @param password user password.
@@ -294,6 +298,8 @@ public class LexActivator {
      * Sets the current app version of your application.
      * The app version appears along with the activation details in dashboard. It is
      * also used to generate app analytics.
+     * 
+     * @deprecated This function is deprecated. Use SetReleaseVersion() instead.
      *
      * @param appVersion string of maximum length 256 characters with utf-8
      *                   encoding.
@@ -472,6 +478,8 @@ public class LexActivator {
         /**
      * Gets the product version name.
      * 
+     * @deprecated This function is deprecated. Use GetLicenseEntitlementSetName() instead.
+     * 
      * @return name - Returns the name of the Product Version being used.
      * @throws LexActivatorException
      * @throws UnsupportedEncodingException
@@ -489,6 +497,8 @@ public class LexActivator {
 
     /**
      * Gets the product version display name.
+     * 
+     * @deprecated This function is deprecated. Use GetLicenseEntitlementSetDisplayName() instead.
      * 
      * @return displayName - Returns the display name of the Product Version being used.
      * @throws LexActivatorException
@@ -508,6 +518,8 @@ public class LexActivator {
     /**
      * Gets the product version feature flag.
      * 
+     * @deprecated This function is deprecated. Use GetFeatureEntitlement() instead.
+     * 
      * @param name - The name of the Feature Flag.
      * @return The properties of the Feature Flag as an object.
      * @throws LexActivatorException
@@ -522,6 +534,103 @@ public class LexActivator {
             if (LA_OK == status) {
                 return new ProductVersionFeatureFlag(name, enabled.getValue() > 0 , new String(buffer.array(), "UTF-8").trim() );
             }
+        throw new LexActivatorException(status);
+    }
+
+    /**
+     * Gets the name of the license entitlement set.
+     * 
+     * @return Returns the name of the license entitlement set.
+     * @throws LexActivatorException
+     * @throws UnsupportedEncodingException
+     */
+    public static String GetLicenseEntitlementSetName() throws LexActivatorException, UnsupportedEncodingException {
+        int status;
+        int bufferSize = 256;
+        ByteBuffer buffer = ByteBuffer.allocate(bufferSize);
+        status = LexActivatorNative.GetLicenseEntitlementSetName(buffer, bufferSize);
+        if (LA_OK == status) {
+            return new String(buffer.array(), "UTF-8").trim();
+        }
+        throw new LexActivatorException(status);
+    }
+
+    /**
+     * Gets the display name of the license entitlement set.
+     * 
+     * @return Returns the display name of the license entitlement set.
+     * @throws LexActivatorException
+     * @throws UnsupportedEncodingException
+     */
+    public static String GetLicenseEntitlementSetDisplayName() throws LexActivatorException, UnsupportedEncodingException {
+        int status;
+        int bufferSize = 256;
+        ByteBuffer buffer = ByteBuffer.allocate(bufferSize);
+        status = LexActivatorNative.GetLicenseEntitlementSetDisplayName(buffer, bufferSize);
+        if (LA_OK == status) {
+            return new String(buffer.array(), "UTF-8").trim();
+        }
+        throw new LexActivatorException(status);
+    }
+
+    /**
+     * Gets the feature entitlements associated with the license.
+     * 
+     * Feature entitlements can be linked directly to a license (license feature entitlements) 
+     * or via entitlement sets. If a feature entitlement is defined in both, the value from 
+     * the license feature entitlement takes precedence, overriding the entitlement set value.
+     *
+     * @return Returns a list of feature entitlements.
+     * @throws LexActivatorException
+     * @throws UnsupportedEncodingException
+     */
+    public static List<FeatureEntitlement> GetFeatureEntitlements() throws LexActivatorException, UnsupportedEncodingException {
+        int status;
+        int bufferSize = 4096;
+
+        ByteBuffer buffer = ByteBuffer.allocate(bufferSize);
+        status = LexActivatorNative.GetFeatureEntitlementsInternal(buffer, bufferSize);
+        if (LA_OK == status) {
+            String featureEntitlementsJson = new String(buffer.array(), "UTF-8").trim();
+            if (!featureEntitlementsJson.isEmpty()) {
+                ObjectMapper objectMapper = new ObjectMapper();
+                try {
+                    List<FeatureEntitlement> featureEntitlements = objectMapper.readValue(featureEntitlementsJson, new TypeReference<List<FeatureEntitlement>>() {});
+                    return featureEntitlements;
+                } catch (JsonProcessingException e) {}
+            } else {
+                return new ArrayList<>();
+            }
+        }
+        throw new LexActivatorException(status);
+    }
+
+    /**
+     * Gets the feature entitlement associated with the license.
+     * 
+     * Feature entitlements can be linked directly to a license (license feature entitlements) 
+     * or via entitlement sets. If a feature entitlement is defined in both, the value from 
+     * the license feature entitlement takes precedence, overriding the entitlement set value.
+     * 
+     * @param featureName The name of the feature.
+     * @return Returns the feature entitlement object.
+     * @throws LexActivatorException
+     * @throws UnsupportedEncodingException
+     */
+    public static FeatureEntitlement GetFeatureEntitlement(String featureName) throws LexActivatorException, UnsupportedEncodingException {
+        int status;
+        int bufferSize = 1024;
+
+        ByteBuffer buffer = ByteBuffer.allocate(bufferSize);
+        status = LexActivatorNative.GetFeatureEntitlementInternal(featureName, buffer, bufferSize);
+        if (LA_OK == status) {
+            String featureEntitlementJson = new String(buffer.array(), "UTF-8").trim();
+            ObjectMapper objectMapper = new ObjectMapper();
+            try {
+                FeatureEntitlement featureEntitlement = objectMapper.readValue(featureEntitlementJson, FeatureEntitlement.class);
+                return featureEntitlement;
+            } catch (JsonProcessingException e) {}
+        }
         throw new LexActivatorException(status);
     }
 
