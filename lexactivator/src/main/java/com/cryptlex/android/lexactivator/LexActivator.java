@@ -729,6 +729,28 @@ public class LexActivator {
     }
 
     /**
+     * Gets the activation last synced date timestamp.
+     * 
+     * Initially, this timestamp matches the activation creation date, and then updates with each successful server sync.
+     * 
+     * @return Returns the timestamp
+     * @throws LexActivatorException
+     */
+    public static int GetActivationLastSyncedDate() throws LexActivatorException {
+        int status;
+        IntByReference activationLastSyncedDate = new IntByReference(0);
+        status = LexActivatorNative.GetActivationLastSyncedDate(activationLastSyncedDate);
+        switch (status) {
+        case LA_OK:
+            return activationLastSyncedDate.getValue();
+        case LA_FAIL:   
+            return 0;
+        default:
+            throw new LexActivatorException(status);
+        }
+    }
+
+    /**
      * Gets the license expiry date timestamp.
      *
      * @return Returns the timestamp

@@ -93,6 +93,8 @@ public class LexActivatorNative implements Library {
 
     public static native int GetActivationCreationDate(IntByReference activationCreationDate);
 
+    public static native int GetActivationLastSyncedDate(IntByReference activationLastSyncedDate);
+
     public static native int GetLicenseExpiryDate(IntByReference expiryDate);
 
     public static native int GetLicenseMaintenanceExpiryDate(IntByReference maintenanceExpiryDate);
