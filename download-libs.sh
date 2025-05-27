@@ -1,6 +1,6 @@
 #!/bin/bash 
 set -e
-VERSION="v3.32.1";
+VERSION="v3.32.2";
 curl -O -L https://dl.cryptlex.com/downloads/${VERSION}/LexActivator-Android.zip
 unzip LexActivator-Android.zip -d ./android
 cp ./android/libs/clang/arm64-v8a/libLexActivator.so lexactivator/src/main/jniLibs/arm64-v8a
