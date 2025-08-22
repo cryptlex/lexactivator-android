@@ -51,7 +51,7 @@ jobs:
         cache: 'gradle'
         
     - name: Gradle Wrapper
-      run: gradle wrapper
+      run: ./gradlew wrapper --gradle-version=8.14
                  
     - name: Publish with Gradle
       env:
