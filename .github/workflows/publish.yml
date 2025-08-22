@@ -48,10 +48,14 @@ jobs:
       with:
         distribution: 'temurin'
         java-version: '17'
-        cache: 'gradle'
+
+    - name: Setup Gradle 8.14
+      uses: gradle/actions/setup-gradle@v4
+      with:
+        gradle-version: '8.14'
         
     - name: Gradle Wrapper
-      run: ./gradlew wrapper --gradle-version=8.14
+      run: gradle wrapper --gradle-version=8.14
                  
     - name: Publish with Gradle
       env:
