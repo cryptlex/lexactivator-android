@@ -2,6 +2,11 @@ name: AAR Publish
 
 on:
   workflow_dispatch:
+    inputs:
+      packageVersion:
+        description: 'Package Version'
+        required: true
+        default: ''
 
 jobs:
   publish:
