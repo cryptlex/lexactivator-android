@@ -51,14 +51,14 @@ mavenPublishing {
             }
         }
         organization {
-            name = 'Cryptlex, LLP'
+            name = 'Cryptlex LLP'
             url = 'https://cryptlex.com'
         }
         developers {
             developer {
                 name = 'Cryptlex Team'
                 email = 'support@cryptlex.com'
-                organization = 'Cryptlex, LLP.'
+                organization = 'Cryptlex LLP.'
                 organizationUrl = 'https://cryptlex.com'
             }
         }
