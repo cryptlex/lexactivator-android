@@ -12,11 +12,21 @@ public class UserLicense {
      * The allowed deactivations of the license. A value of -1 indicates unlimited number of deactivations.
      */
     public long allowedDeactivations;
-    
+
     /**
      * The license key.
      */
     public String key;
+
+     /**
+     * Total number of activations for the license.
+     */
+    public long totalActivations;
+
+     /**
+     * Total number of deactivations for the license.
+     */
+    public long totalDeactivations;
 
     /**
      * The license type (node-locked or hosted-floating).
