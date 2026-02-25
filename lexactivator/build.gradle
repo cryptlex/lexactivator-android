@@ -22,10 +22,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    // packagingOptions {
-    //     merges.add("META-INF/LICENSE")
-    //     merges.add("META-INF/NOTICE")
-    // }
+    packagingOptions {
+        merges.add("META-INF/LICENSE")
+        merges.add("META-INF/NOTICE")
+    }
 
     namespace 'com.cryptlex.android.lexactivator'
 }
