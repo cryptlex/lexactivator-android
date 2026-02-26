@@ -12,7 +12,7 @@ License notice for:
 com.fasterxml.jackson  Name: jackson-bom  Version: 2.14.2
 Jackson-annotations (com.fasterxml.jackson.core:jackson-annotations:2.14.2 - https://github.com/FasterXML/jackson-annotations)
 Jackson-core (com.fasterxml.jackson.core:jackson-core:2.14.2 - https://github.com/FasterXML/jackson-core)
-jackson-databind (com.fasterxml.jackson.core:jackson-databind:2.14.2 - https://github.com/FasterXML/jackson)
+Jackson-databind (com.fasterxml.jackson.core:jackson-databind:2.14.2 - https://github.com/FasterXML/jackson)
 Java Native Access (net.java.dev.jna:jna:5.13.0 - https://github.com/java-native-access/jna)
 -------------------------------------------------
                                  Apache License
