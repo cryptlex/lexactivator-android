@@ -85,6 +85,8 @@ public class LexActivatorNative implements Library {
 
     public static native int GetLicenseEntitlementSetDisplayName(ByteBuffer entitlementSetDisplayName, int length);
 
+    public static native int GetLicenseEntitlementSetTier(LongByReference tier);
+
     public static native int GetFeatureEntitlementsInternal(ByteBuffer featureEntitlementsJson, int length);
 
     public static native int GetFeatureEntitlementInternal(String name, ByteBuffer featureEntitlementJson, int length);

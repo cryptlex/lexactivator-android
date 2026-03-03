@@ -516,6 +516,22 @@ public class LexActivator {
     }
 
     /**
+     * Gets the tier of the license entitlement set.
+     *
+     * @return Returns the tier of the license entitlement set.
+     * @throws LexActivatorException
+     */
+    public static long GetLicenseEntitlementSetTier() throws LexActivatorException {
+        int status;
+        LongByReference tier = new LongByReference(0);
+        status = LexActivatorNative.GetLicenseEntitlementSetTier(tier);
+        if (LA_OK == status) {
+            return tier.getValue();
+        }
+        throw new LexActivatorException(status);
+    }
+
+    /**
      * Gets the product version feature flag.
      * 
      * @deprecated This function is deprecated. Use GetFeatureEntitlement() instead.
