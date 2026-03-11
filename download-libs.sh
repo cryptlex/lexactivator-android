@@ -3,8 +3,11 @@ set -e
 VERSION="v3.39.0";
 curl -O -L https://dl.cryptlex.com/downloads/${VERSION}/LexActivator-Android.zip
 unzip LexActivator-Android.zip -d ./android
+cp ./android/THIRD-PARTY-NOTICES.txt lexactivator/src/main/jniLibs/arm64-v8a
 cp ./android/libs/clang/arm64-v8a/libLexActivator.so lexactivator/src/main/jniLibs/arm64-v8a
+cp ./android/THIRD-PARTY-NOTICES.txt lexactivator/src/main/jniLibs/armeabi-v7a
 cp ./android/libs/clang/armeabi-v7a/libLexActivator.so lexactivator/src/main/jniLibs/armeabi-v7a
+cp ./android/THIRD-PARTY-NOTICES.txt lexactivator/src/main/jniLibs/x86_64
 cp ./android/libs/clang/x86_64/libLexActivator.so lexactivator/src/main/jniLibs/x86_64
 rm LexActivator-Android.zip
 rm -r android

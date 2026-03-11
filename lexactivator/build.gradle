@@ -22,6 +22,11 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    packagingOptions {
+        merges.add("META-INF/LICENSE")
+        merges.add("META-INF/NOTICE")
+    }
+
     namespace 'com.cryptlex.android.lexactivator'
 }
 
@@ -46,8 +51,8 @@ mavenPublishing {
         url = 'https://github.com/cryptlex/lexactivator-android'
         licenses {
             license {
-                name = 'MIT License'
-                url = 'http://www.opensource.org/licenses/mit-license.php'
+                name = 'Proprietary'
+                url = 'https://docs.cryptlex.com/legal/terms-of-service'
             }
         }
         organization {
