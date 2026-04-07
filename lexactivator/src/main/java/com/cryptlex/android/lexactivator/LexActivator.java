@@ -1628,12 +1628,14 @@ public class LexActivator {
     }
 
     /**
-     * Synchronizes the activation data with the Cryptlex servers. The license must already
-     * be activated when this function is called. This is a blocking call that performs a
-     * one-time synchronization to refresh the local license data. In most cases, rely on
-     * IsLicenseGenuine(), which automatically handles periodic background synchronization
-     * based on the configured interval. <b>Note: </b>Do not use this function in regular
-     * application flow. Use it only when an immediate synchronization is required.
+     * Synchronizes the activation data with the Cryptlex servers.
+     * The license must already be activated when this function is called.
+     * This is a blocking call that performs a one-time synchronization to refresh
+     * the local license data.
+     * In most cases, rely on IsLicenseGenuine(), which automatically handles
+     * periodic background synchronization based on the configured interval.
+     * <b>Note: </b>Do not use this function in regular application flow. Use it
+     * only when an immediate synchronization is required.
      *
      * @return LA_OK, LA_EXPIRED, LA_SUSPENDED, LA_FAIL
      * @throws LexActivatorException
@@ -1681,13 +1683,14 @@ public class LexActivator {
     }
 
     /**
-     * Synchronizes the trial activation data with the Cryptlex servers . The trial must
-     * already be activated when this function is called. This is a blocking call that
-     * performs a one-time synchronization to refresh the local trial data. Unlike
-     * IsTrialGenuine(), which validates the trial activation locally, this function
-     * performs an immediate synchronization with the servers. <b>Note: </b>Use this
-     * function to immediately reflect server-side changes on the user's machine, such as
-     * trial extensions.
+     * Synchronizes the trial activation data with the Cryptlex servers.
+     * The trial must already be activated when this function is called.
+     * This is a blocking call that performs a one-time synchronization to refresh
+     * the local trial data.
+     * Unlike IsTrialGenuine(), which validates the trial activation locally, this
+     * function performs an immediate synchronization with the servers.
+     * <b>Note: </b>Use this function to immediately reflect server-side changes on
+     * the user's machine, such as trial extensions.
      *
      * @return LA_OK, LA_TRIAL_EXPIRED, LA_FAIL
      * @throws LexActivatorException
