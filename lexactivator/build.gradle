@@ -35,7 +35,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'net.java.dev.jna:jna:5.13.0@aar'
+    implementation 'net.java.dev.jna:jna:5.17.0@aar'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
 }
 
